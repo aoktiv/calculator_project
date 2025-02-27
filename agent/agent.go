@@ -57,29 +57,29 @@ func taskWorker() {
 	}
 }
 
-func fetchTask() (Task, error) {
+func fetchTask() (orchestrator.Task, error) {
 	resp, err := http.Get("http://localhost:8080/internal/task")
 	if err != nil {
-		return Task{}, err
+		return orchestrator.Task{}, err
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return Task{}, fmt.Errorf("failed to get task, status: %d", resp.StatusCode)
+		return orchestrator.Task{}, fmt.Errorf("failed to get task, status: %d", resp.StatusCode)
 	}
 
 	var result struct {
-		Task Task `json:"task"`
+		Task orchestrator.Task `json:"task"`
 	}
 	err = json.NewDecoder(resp.Body).Decode(&result)
 	if err != nil {
-		return Task{}, err
+		return orchestrator.Task{}, err
 	}
 
 	return result.Task, nil
 }
 
-func compute(task Task) float64 {
+func compute(task orchestrator.Task) float64 {
 	var result float64
 	switch task.Operation {
 	case "addition":
