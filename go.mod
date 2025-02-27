@@ -1,3 +1,3 @@
-module calculator_project
+module github.com/aoktiv/calculator_project
 
 go 1.24

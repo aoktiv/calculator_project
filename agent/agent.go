@@ -1,6 +1,5 @@
 package agent
 
-
 import (
 	"encoding/json"
 	"fmt"
@@ -11,7 +10,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/aoktiv/testproject/orchestrator"
+	"github.com/aoktiv/calculator_project/orchestrator"
 )
 
 var computingPower = 2 // Number of worker goroutines for agent
