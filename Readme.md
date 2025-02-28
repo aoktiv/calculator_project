@@ -98,3 +98,54 @@
 
     Убедитесь, что у вас установлена последняя версия golang и все 
     необходимые для работы программы пакеты!
+
+
+## CURLs
+    
+    Код 201:
+
+    1) curl --location 'localhost/api/v1/calculate' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "expression": "2+2*2"
+    }'
+    2) curl --location 'localhost/api/v1/calculate' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "expression": "(20*2)+5"
+    }'
+    3) curl --location 'localhost/api/v1/calculate' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "expression": "17*9-10"
+    }'
+    4) curl --location 'localhost/api/v1/calculate' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "expression": "(12/3)*5"
+    }'
+
+    ----------------------------------------------------
+
+    Код 422:
+
+    1) curl --location 'localhost/api/v1/calculate' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "expression": "2+2*"
+    }'
+    2) curl --location 'localhost/api/v1/calculate' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "expression": "(20*)+5"
+    }'
+    3) curl --location 'localhost/api/v1/calculate' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "expression": "*9-10"
+    }'
+    4) curl --location 'localhost/api/v1/calculate' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "expression": "(12/3*5"
+    }'
