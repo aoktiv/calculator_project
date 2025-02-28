@@ -83,6 +83,8 @@
 
 ## Принцип работы
 
+    Если картинка не показывается как нужно, нажмите на ссылку пожалуйста.
+
 ![alt text](https://github.com/aoktiv/calculator_project/tree/main/source/scheme.png)
 
 
