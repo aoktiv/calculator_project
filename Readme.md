@@ -83,7 +83,7 @@
 
 ## Принцип работы
 
-![alt text](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![alt text](https://github.com/aoktiv/calculator_project/tree/main/source/scheme.png)
 
 
 ## Как запустить
