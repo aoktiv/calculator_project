@@ -46,7 +46,7 @@ func taskWorker() {
 			log.Println("Error sending result:", err)
 		}
 
-		time.Sleep(1 * time.Second) // Simulate delay
+		time.Sleep(1 * time.Second)
 	}
 }
 
