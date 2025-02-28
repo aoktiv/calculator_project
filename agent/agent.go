@@ -13,30 +13,25 @@ import (
 	"github.com/aoktiv/calculator_project/orchestrator"
 )
 
-var computingPower = 2 // Number of worker goroutines for agent
+var computingPower = 2
 
-// ResultRequest represents the result from the agent
 type ResultRequest struct {
 	ID     string  `json:"id"`
 	Result float64 `json:"result"`
 }
 
 func main() {
-	// Get computing power from environment variable
 	computingPower = getEnv("COMPUTING_POWER", 2)
 
-	// Start worker goroutines
 	for i := 0; i < computingPower; i++ {
 		go taskWorker()
 	}
 
-	// Block forever
 	select {}
 }
 
 func taskWorker() {
 	for {
-		// Fetch task from orchestrator
 		task, err := fetchTask()
 		if err != nil {
 			log.Println("Error fetching task:", err)
@@ -44,10 +39,8 @@ func taskWorker() {
 			continue
 		}
 
-		// Compute the result
 		result := compute(task)
 
-		// Send result back to orchestrator
 		err = sendResult(task.ID, result)
 		if err != nil {
 			log.Println("Error sending result:", err)
@@ -97,7 +90,6 @@ func compute(task orchestrator.Task) float64 {
 }
 
 func sendResult(id string, result float64) error {
-	// Send result to orchestrator
 	reqBody := ResultRequest{ID: id, Result: result}
 	data, err := json.Marshal(reqBody)
 	if err != nil {
@@ -117,7 +109,6 @@ func sendResult(id string, result float64) error {
 	return nil
 }
 
-// Helper function to get environment variable with default
 func getEnv(key string, defaultValue int) int {
 	value, exists := os.LookupEnv(key)
 	if !exists {
